@@ -1201,7 +1201,13 @@ function filtrer_ical($texte) {
 }
 
 function date_ical($date_heure, $minutes = 0) {
-	return date("Ymd\THis", mktime(heures($date_heure),minutes($date_heure)+$minutes,0,mois($date_heure),jour($date_heure),annee($date_heure)));
+    $heures = heures($date_heure);
+    $minutes = minutes($date_heure)+$minutes;
+    $mois = mois($date_heure);
+    $jour = jour($date_heure);
+    $annee = annee($date_heure);
+    $mktime = mktime($heures,$minutes,0,$mois,$jour,$annee);
+	return date("Ymd\THis", $mktime);
 }
 
 function date_iso($date_heure) {
